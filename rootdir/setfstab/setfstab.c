@@ -118,24 +118,23 @@ void ln(const char *oldpath, const char *newpath)
 
 int main(int argc, const char **argv) {
 
-    int syspart;
+    int respart;
 
-    LEGACY = ((syspart = emmc_name_to_number("system")) == 33);
+    LEGACY = ((respart = emmc_name_to_number("reserve")) != 32);
 
-    if (DEBUG) { logi("System partition found at %d", syspart); }
+    if (DEBUG) { logi("Reserve partition found at %d", respart); }
 
     if (LEGACY) {
         cp("/fstab-old.qcom", "/fstab.qcom");
-        cp("/remount-old.qcom", "/remount.qcom");
+	setprop sys.storage_legacy = 1;
 //        ln("/storage/sdcard0", "/mnt/sdcard");
 //        ln("/storage/sdcard0", "/sdcard");
     } else {
         cp("/fstab-new.qcom", "/fstab.qcom");
-        cp("/remount-new.qcom", "/remount.qcom");
+	setprop sys.storage_legacy = 0;
 //        ln("/storage/emulated/legacy", "/mnt/sdcard");
 //        ln("/storage/emulated/legacy", "/sdcard");
     }
 
     exit(0);
 }
-

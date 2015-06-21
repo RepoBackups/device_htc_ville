@@ -110,4 +110,4 @@ BOARD_VOLD_MAX_PARTITIONS := 40
 
 # Recovery
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_10x18.h\"
-TARGET_RECOVERY_FSTAB := device/htc/ville/rootdir/etc/fstab-old.qcom
+TARGET_RECOVERY_FSTAB := device/htc/ville/recovery/recovery.fstab

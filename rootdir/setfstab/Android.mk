@@ -1,6 +1,6 @@
 LOCAL_PATH := $(call my-dir)
 
-ifneq ($(TARGET_SETS_FSTAB),)
+ifeq ($(TARGET_SETS_FSTAB),true)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE            := setfstab
